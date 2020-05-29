@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Flower</title>
+</head>
+
+<body>
+
+<canvas id="my_canvas"></canvas>
+
+<script>
+
+  // Холст
+  let canvas = document.getElementById('my_canvas');
+  
+  canvas.width = 700;
+  canvas.height = 550;
+  
+  let context = canvas.getContext('2d');
+  
+  // Поле
+  let ColorOfSky1 = "white";
+  let ColorOfSky2 = "blue";
+  
+  let grd = context.createLinearGradient(550,0,700,550);
+  grd.addColorStop(0,ColorOfSky1);
+  grd.addColorStop(1,ColorOfSky2);
+  
+  context.fillStyle = grd;
+  context.fillRect(0,0,700,550);
+  
+  // Лепестки
+  // Левый
+  context.beginPath();
+  context.arc(320,180,30,0, 2*Math.PI);
+  context.fillStyle = "DarkTurquoise";
+  context.fill();
+  
+  // Правый
+  context.beginPath();
+  context.arc(380,180,30,0, 2*Math.PI);
+  context.fillStyle = "Turquoise";
+  context.fill();
+  
+  // Верхний
+  context.beginPath();
+  context.arc(350,150,30,0, 2*Math.PI);
+  context.fillStyle = "MediumTurquoise";
+  context.fill();
+  
+  // Нижний
+  context.beginPath();
+  context.arc(350,210,30,0, 2*Math.PI);
+  context.fillStyle = "Aquamarine";
+  context.fill();
+  
+  // Глазок цветка  
+  context.beginPath();
+  eye = context.arc(350,180,20,0, 2*Math.PI);
+  context.fillStyle = "Gold";
+  context.fill();
+  
+  // Стебель
+  context.beginPath();
+  context.bezierCurveTo(350, 240, 360, 450, 300, 450);
+  context.lineWidth = 3;
+  context.strokeStyle = "DarkGreen";
+  context.stroke();
+  
+  // Листочек
+  context.beginPath();
+  context.moveTo(350, 330);
+  context.bezierCurveTo(400, 250, 450, 250, 500, 250);
+  context.moveTo(350, 330);
+  context.quadraticCurveTo(400, 350, 500, 250);
+  context.lineWidth = 4;
+  context.fillStyle = "DarkGreen";
+  context.lineCap = "round";
+  context.fill();
+  context.stroke();
+  
+  // Листочек (внутри)
+  context.beginPath();
+  context.moveTo(350, 330);
+  context.bezierCurveTo(405, 255, 455, 250, 500, 250);
+  context.moveTo(350, 330);
+  context.quadraticCurveTo(390, 340, 500, 250);
+  context.lineWidth = 4;
+  context.fillStyle = "ForestGreen";
+  context.lineCap = "round";
+  context.fill();
+  context.stroke();
+  
+  // Земля <
+  context.fillStyle = "DarkGreen";
+  context.fillRect(0, 445, 700, 105);
+  
+  // Земля >
+  context.fillStyle = "Green";
+  context.fillRect(0, 445, 700, 35);
+
+  // Солнце
+  context.beginPath();
+  context.arc(100,100,80,0, 2*Math.PI);
+  let sun = gradient = context.createRadialGradient(120,100,100,110,100,30);
+  gradient.addColorStop(0, "yellow");
+  gradient.addColorStop(1, "white");
+  context.fillStyle = sun;
+  context.fill();
+  
+  
+</script>
+</body>
